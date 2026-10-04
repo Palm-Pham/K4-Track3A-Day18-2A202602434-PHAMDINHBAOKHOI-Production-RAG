@@ -1,76 +1,40 @@
-"""
-Lab 18: Production RAG Pipeline — Main Entry Point
-===================================================
-Chạy toàn bộ pipeline: naive baseline → production → so sánh → report.
-
-Usage:
-    python main.py
-"""
+"""Run the baseline and production pipelines and write their comparison."""
 
 import json
-import os
-import sys
 import time
 
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8")
-if hasattr(sys.stderr, "reconfigure"):
-    sys.stderr.reconfigure(encoding="utf-8")
+import config
+
+METRICS = ("faithfulness", "answer_relevancy", "context_precision", "context_recall")
 
 
 def main():
-    print("=" * 60)
-    print("LAB 18: PRODUCTION RAG PIPELINE")
-    print("=" * 60)
-    start = time.time()
-
-    os.makedirs("reports", exist_ok=True)
-
-    # Step 1: Basic Baseline
-    print("\n📌 STEP 1: Running Basic RAG Baseline...")
-    print("-" * 40)
     from naive_baseline import main as run_baseline
-    run_baseline()
-
-    # Step 2: Production Pipeline
-    print("\n📌 STEP 2: Running Production Pipeline...")
-    print("-" * 40)
     from src.pipeline import build_pipeline, evaluate_pipeline
+
+    started = time.perf_counter()
+    print("LAB 18: PRODUCTION RAG PIPELINE", flush=True)
+    baseline = run_baseline()
     search, reranker = build_pipeline()
-    prod_results = evaluate_pipeline(search, reranker)
-
-    # Ensure reports are located in reports/
-    for f in ["ragas_report.json", "naive_baseline_report.json"]:
-        if os.path.exists(f):
-            os.replace(f, f"reports/{f}")
-
-    # Step 3: Comparison
-    print("\n📌 STEP 3: Comparison")
-    print("-" * 40)
-    naive_path = "reports/naive_baseline_report.json"
-    prod_path = "reports/ragas_report.json"
-
-    if os.path.exists(naive_path) and os.path.exists(prod_path):
-        with open(naive_path, encoding="utf-8") as f:
-            naive = json.load(f)
-        with open(prod_path, encoding="utf-8") as f:
-            prod = json.load(f)
-
-        print(f"\n{'Metric':<25} {'Basic':>8} {'Production':>12} {'Δ':>8}")
-        print("-" * 55)
-        for m in ["faithfulness", "answer_relevancy", "context_precision", "context_recall"]:
-            n = naive.get("aggregate", {}).get(m, 0)
-            p = prod.get("aggregate", {}).get(m, 0)
-            d = p - n
-            status = "✓" if p >= 0.75 else " "
-            print(f"{status} {m:<23} {n:>8.4f} {p:>12.4f} {d:>+8.4f}")
-
-    elapsed = time.time() - start
-    print(f"\n⏱️  Total time: {elapsed:.1f}s")
-    print("\n📋 Next steps:")
-    print("  1. Điền analysis/failure_analysis.md")
-    print("  2. Viết analysis/reflections/reflection_[HọTên].md")
-    print("  3. Chạy: python check_lab.py")
+    production = evaluate_pipeline(search, reranker)
+    measured = baseline.get("status") == "evaluated" and production.get("status") == "evaluated"
+    print(f"\n{'Metric':<25} {'Naive':>9} {'Production':>12} {'Delta':>9}")
+    comparison = {}
+    for metric in METRICS:
+        naive_score, prod_score = baseline.get(metric, 0), production.get(metric, 0)
+        comparison[metric] = {"naive": naive_score, "production": prod_score,
+                              "delta": prod_score - naive_score if measured else None}
+        delta = f"{prod_score - naive_score:+.4f}" if measured else "N/A"
+        print(f"{metric:<25} {naive_score:>9.4f} {prod_score:>12.4f} {delta:>9}")
+    report = {"metrics": comparison, "measured": measured,
+              "naive_status": baseline.get("status"), "production_status": production.get("status"),
+              "total_seconds": time.perf_counter() - started}
+    (config.REPORTS_DIR / "comparison_report.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    if not measured:
+        print("RAGAS unavailable or partial: numeric fallback values are not measured scores.")
+    print(f"Reports saved in {config.REPORTS_DIR}; total {report['total_seconds']:.1f}s", flush=True)
+    return report
 
 
 if __name__ == "__main__":
