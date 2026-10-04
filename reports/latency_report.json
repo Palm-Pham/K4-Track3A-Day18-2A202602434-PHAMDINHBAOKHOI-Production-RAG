@@ -1,0 +1,171 @@
+{
+  "build_ms": {
+    "load_and_chunk_ms": 37.751615993329324,
+    "enrichment_ms": 346988.0977389985,
+    "index_ms": 48245.26594099734,
+    "reranker_load_ms": 6129.711166999186
+  },
+  "evaluation_ms": 94462.0902280003,
+  "queries": [
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày khi kết hôn?",
+      "search_ms": 176.54679599945666,
+      "rerank_ms": 3769.877495004039,
+      "parent_expansion_ms": 0.027362999389879405,
+      "generation_ms": 2501.009227002214,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Bảo hiểm sức khỏe PVI có hạn mức bao nhiêu cho nhân viên?",
+      "search_ms": 190.34657199517824,
+      "rerank_ms": 4288.467464997666,
+      "parent_expansion_ms": 0.018967002688441426,
+      "generation_ms": 1973.6053870001342,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Phụ cấp ăn trưa hàng tháng là bao nhiêu?",
+      "search_ms": 178.93238000397105,
+      "rerank_ms": 4514.070976001676,
+      "parent_expansion_ms": 0.015069999790284783,
+      "generation_ms": 1142.4758569992264,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "search_ms": 169.54845599684631,
+      "rerank_ms": 3411.3990340047167,
+      "parent_expansion_ms": 0.015158999303821474,
+      "generation_ms": 1336.1902680044295,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "search_ms": 182.00249300571159,
+      "rerank_ms": 3135.864402000152,
+      "parent_expansion_ms": 0.01635200169403106,
+      "generation_ms": 1290.6810710046557,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+      "search_ms": 188.79685599677032,
+      "rerank_ms": 3825.145442999201,
+      "parent_expansion_ms": 0.019728002371266484,
+      "generation_ms": 1820.6848709960468,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Bao lâu phải đổi mật khẩu một lần?",
+      "search_ms": 178.63554500218015,
+      "rerank_ms": 3483.4611040059826,
+      "parent_expansion_ms": 0.02248400414828211,
+      "generation_ms": 947.3463219983387,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "search_ms": 182.69998499454232,
+      "rerank_ms": 5021.28424699913,
+      "parent_expansion_ms": 0.022614003682974726,
+      "generation_ms": 2783.0378899961943,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nhân viên thử việc có được nghỉ phép năm không?",
+      "search_ms": 177.3677070013946,
+      "rerank_ms": 3170.8767669988447,
+      "parent_expansion_ms": 0.014699005987495184,
+      "generation_ms": 2181.3944980021915,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Khi phát hiện malware trên máy, nhân viên có nên tự xử lý không?",
+      "search_ms": 191.58830900414614,
+      "rerank_ms": 4293.787249000161,
+      "parent_expansion_ms": 0.018775994249153882,
+      "generation_ms": 1351.4773079950828,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nhân viên thử việc có được hưởng bảo hiểm sức khỏe PVI không?",
+      "search_ms": 193.42623300326522,
+      "rerank_ms": 4157.5734759971965,
+      "parent_expansion_ms": 0.023455999325960875,
+      "generation_ms": 1485.6576599995606,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "search_ms": 194.68517399945995,
+      "rerank_ms": 3858.1026140018366,
+      "parent_expansion_ms": 0.01748400245560333,
+      "generation_ms": 1784.1422889978276,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "search_ms": 199.98072100133868,
+      "rerank_ms": 4784.474227999453,
+      "parent_expansion_ms": 0.019146995327901095,
+      "generation_ms": 1876.3529249990825,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "search_ms": 203.70674500009045,
+      "rerank_ms": 4564.70305500261,
+      "parent_expansion_ms": 0.01736300328047946,
+      "generation_ms": 1542.5036480010021,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Mentor và buddy của nhân viên mới có thể là cùng một người không? Quản lý trực tiếp có thể làm mentor không?",
+      "search_ms": 206.3282680028351,
+      "rerank_ms": 4627.828037999279,
+      "parent_expansion_ms": 0.01907700061565265,
+      "generation_ms": 1347.6984119988629,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+      "search_ms": 172.81657300191,
+      "rerank_ms": 3993.4623210065183,
+      "parent_expansion_ms": 0.017272999684792012,
+      "generation_ms": 2283.9650789974257,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nhân viên tạm ứng 15 triệu, sau 20 ngày mới thanh toán. Bị phạt bao nhiêu?",
+      "search_ms": 179.4647949936916,
+      "rerank_ms": 4469.163412002672,
+      "parent_expansion_ms": 0.017143000150099397,
+      "generation_ms": 2728.116976999445,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
+      "search_ms": 176.4943470043363,
+      "rerank_ms": 4531.47718100081,
+      "parent_expansion_ms": 0.01706300099613145,
+      "generation_ms": 2660.6112649969873,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Thông tin lương thuộc cấp độ phân loại dữ liệu nào?",
+      "search_ms": 184.03846599539975,
+      "rerank_ms": 5040.736707000178,
+      "parent_expansion_ms": 0.01683199661783874,
+      "generation_ms": 1840.8241270008148,
+      "generation_status": "llm"
+    },
+    {
+      "question": "Nghỉ phép không lương 20 ngày cần ai phê duyệt?",
+      "search_ms": 183.12372200307436,
+      "rerank_ms": 3823.3965690014884,
+      "parent_expansion_ms": 0.016131001757457852,
+      "generation_ms": 1116.435153002385,
+      "generation_status": "llm"
+    }
+  ]
+}

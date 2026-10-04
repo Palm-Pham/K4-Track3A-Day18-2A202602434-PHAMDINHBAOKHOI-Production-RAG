@@ -1,0 +1,28 @@
+{
+  "metrics": {
+    "faithfulness": {
+      "naive": 0.8333333333333334,
+      "production": 0.8590909090909091,
+      "delta": 0.025757575757575757
+    },
+    "answer_relevancy": {
+      "naive": 0.5175706957580805,
+      "production": 0.6464909381724513,
+      "delta": 0.12892024241437083
+    },
+    "context_precision": {
+      "naive": 0.9333333332716667,
+      "production": 0.9916666665954166,
+      "delta": 0.0583333333237499
+    },
+    "context_recall": {
+      "naive": 0.925,
+      "production": 0.875,
+      "delta": -0.050000000000000044
+    }
+  },
+  "measured": true,
+  "naive_status": "evaluated",
+  "production_status": "evaluated",
+  "total_seconds": 914.5003001130026
+}
